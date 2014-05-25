@@ -5,6 +5,11 @@ var bubbleError = require('bubble-stream-error').bubble;
 var through = require('through2');
 
 module.exports = function(inputStream, write, end, splitText) {
+  write = write || function(chunk, enc, cb) {
+    this.push(chunk);
+    cb();
+  };
+
   var splitStream = split(splitText);
   var stream = through({
     encoding: 'utf8',
