@@ -1,8 +1,8 @@
-"use strict";
+'use strict';
 
-var split = require('event-stream').split;
-var bubbleError = require('bubble-stream-error').bubble;
+var split = require('split');
 var through = require('through2');
+var pump = require('pump-chain');
 
 module.exports = function(inputStream, write, end, splitText) {
   write = write || function(chunk, enc, cb) {
@@ -12,16 +12,8 @@ module.exports = function(inputStream, write, end, splitText) {
 
   var splitStream = split(splitText);
   var stream = through({
-    encoding: 'utf8',
-    decodeStrings: false,
     objectMode: true
   }, write, end);
 
-  splitStream.pipe(stream);
-  bubbleError(stream, [inputStream, splitStream]);
-  inputStream.pipe(splitStream);
-
-  // TODO: manually destroy streams at the end?
-
-  return stream;
+  return pump(inputStream, splitStream, stream);
 };

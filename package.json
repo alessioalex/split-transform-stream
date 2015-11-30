@@ -4,12 +4,12 @@
   "description": "A combination of through2 and split with a straightforward interface.",
   "main": "index.js",
   "dependencies": {
-    "bubble-stream-error": "~0.0.1",
-    "event-stream": "~3.1.5",
-    "through2": "~0.4.2"
+    "split": "^1.0.0",
+    "through2": "^2.0.0",
+    "pump-chain": "^1.0.0"
   },
   "devDependencies": {
-    "tap": "~0.4.9"
+    "tap": "^2.3.1"
   },
   "scripts": {
     "test": "node test.js"
