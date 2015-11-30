@@ -1,6 +1,6 @@
 {
   "name": "split-transform-stream",
-  "version": "0.1.1",
+  "version": "1.0.0",
   "description": "A combination of through2 and split with a straightforward interface.",
   "main": "index.js",
   "dependencies": {
