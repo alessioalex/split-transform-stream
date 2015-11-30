@@ -9,10 +9,14 @@
     "pump-chain": "^1.0.0"
   },
   "devDependencies": {
+    "alessioalex-standard": "^1.1.0",
+    "husky": "^0.10.2",
     "tap": "^2.3.1"
   },
   "scripts": {
-    "test": "node test.js"
+    "lint": "alessioalex-standard",
+    "test": "node test.js",
+    "precommit": "npm run lint && npm test"
   },
   "author": "Alexandru Vladutu <alexandru.vladutu@gmail.com> (http://careers.stackoverflow.com/alessioalex)",
   "license": "MIT"

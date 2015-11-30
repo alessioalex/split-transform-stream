@@ -1,4 +1,5 @@
-"use strict";
+/* eslint-disable no-console, func-names */
+'use strict';
 
 var readStream = require('fs').createReadStream(__filename, 'utf8');
 var splitStream = require('./index');

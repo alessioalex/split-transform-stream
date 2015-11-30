@@ -1,4 +1,5 @@
-"use strict";
+/* eslint-disable no-console, func-names */
+'use strict';
 
 var test = require('tap').test;
 var splitStream = require('./index');

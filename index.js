@@ -4,8 +4,8 @@ var split = require('split');
 var through = require('through2');
 var pump = require('pump-chain');
 
-module.exports = function(inputStream, write, end, splitText) {
-  write = write || function(chunk, enc, cb) {
+module.exports = function splitTransformStream(inputStream, write, end, splitText) {
+  var w = write || function defaultWrite(chunk, enc, cb) {
     this.push(chunk);
     cb();
   };
@@ -13,7 +13,7 @@ module.exports = function(inputStream, write, end, splitText) {
   var splitStream = split(splitText);
   var stream = through({
     objectMode: true
-  }, write, end);
+  }, w, end);
 
   return pump(inputStream, splitStream, stream);
 };
